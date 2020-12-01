@@ -25,7 +25,7 @@ const Home:React.FC = () =>  {
                             subTitle={article.body.substr(0,10)}
                             extra={[
                                 <Button key={'2'} type="link">
-                                    <a href="/edit">Edit</a>
+                                    <a href={`edit/${article._id}`}>Edit</a>
                                 </Button>,
                                 <Popconfirm
                                     key={'1'}
