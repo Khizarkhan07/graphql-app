@@ -60,7 +60,7 @@ const Home:React.FC = () =>  {
         deleteArticle({ variables: { id: id } }).then((result)=> {
             window.location.href= '/'
         });
-    }, [])
+    }, [articles.data])
 
     if (articles.loading ) return <Spin indicator={antIcon} />;
     if (articles.error) return <React.Fragment>Error :(</React.Fragment>;
