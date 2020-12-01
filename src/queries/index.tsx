@@ -11,31 +11,46 @@ export const GET_ARTICLES = gql`
   }
 `;
 
-export const VIEW_USERS = gql`
-  query ($id: Int){
-    getUserInfo(id: $id) {
-      id,
-      name,
-      job_title,
-      email
+export const ADD_ARTICLE = gql`
+  mutation($title: String!, $body: String!, ) {
+      createArticle(article: {title: $title, body: $body}){
+        title,
+        createdAt,
+        _id,
+        body
+      }
+  }
+`;
+
+export const EDIT_ARTICLE = gql`
+ 
+  mutation($id: ID!, $title: String!, $body: String!) {
+      updateArticle(id: $id , article: {title: $title, body: $body}){
+        title,
+        body,
+        createdAt,
+        _id
+      }
+  }
+`;
+
+export const DELETE_ARTICLE = gql`
+  mutation($id: ID!) {
+    deleteArticle(id: $id) {
+    title,
+    createdAt,
+    body
+    }
+  }
+`
+
+export const VIEW_ARTICLE = gql`
+  query ($id: ID!){
+     singleArticle(id: $id) {
+        title,
+        body,
+        _id,
+        createdAt
     }
   }
 `;
-
-export const ADD_USER = gql`
-  mutation($name: String, $email: String, $job_title: String) {
-    createUser (name: $name, email: $email, job_title: $job_title)
-  }
-`;
-
-export const EDIT_USER = gql`
-  mutation($id: Int, $name: String, $email: String, $job_title: String) {
-    updateUserInfo (id: $id, name: $name, email: $email, job_title: $job_title)
-  }
-`;
-
-export const DELETE_USER = gql`
-  mutation($id: Int) {
-    deleteUser(id: $id)
-  }
-`

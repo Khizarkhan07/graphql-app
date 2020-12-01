@@ -7,9 +7,9 @@ const Navbar = () => {
         <Layout className="layout">
             <Header>
                 <div className="logo" />
-                <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
-                    <Menu.Item key="1">Articles</Menu.Item>
-                    <Menu.Item key="2">Create Article</Menu.Item>
+                <Menu theme="dark" mode="horizontal">
+                    <Menu.Item key="1"><a href="/">Articles</a></Menu.Item>
+                    <Menu.Item key="2"><a href="/create">Create Article</a></Menu.Item>
                 </Menu>
             </Header>
         </Layout>
