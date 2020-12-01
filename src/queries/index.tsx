@@ -34,8 +34,12 @@ export const EDIT_USER = gql`
   }
 `;
 
-export const DELETE_USER = gql`
-  mutation($id: Int) {
-    deleteUser(id: $id)
+export const DELETE_ARTICLE = gql`
+  mutation($id: ID!) {
+    deleteArticle(id: $id) {
+    title,
+    createdAt,
+    body
+    }
   }
 `

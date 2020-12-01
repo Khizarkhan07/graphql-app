@@ -1,6 +1,6 @@
 import React, {useCallback, useMemo} from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import {GET_ARTICLES} from "../queries";
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import {GET_ARTICLES, DELETE_ARTICLE} from "../queries";
 import { PageHeader, Button, Descriptions, Spin , Popconfirm } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import './styles.css'
@@ -14,7 +14,7 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 const Home:React.FC = () =>  {
     const articles = useQuery(GET_ARTICLES);
-
+    const [deleteArticle, { loading: deleting, error: deleteError }] = useMutation(DELETE_ARTICLE);
     const renderArticles = useMemo(()=> {
         return articles.data?.articles.map ((article: article)  => {
                 return (
@@ -56,11 +56,13 @@ const Home:React.FC = () =>  {
 
     },[articles.data])
 
-    const handleDelete = useCallback((id: string)=> {
-        console.log(id)
-    }, [articles.data])
+    const handleDelete = useCallback( (id: string)=> {
+        deleteArticle({ variables: { id: id } }).then((result)=> {
+            window.location.href= '/'
+        });
+    }, [])
 
-    if (articles.loading) return <Spin indicator={antIcon} />;
+    if (articles.loading ) return <Spin indicator={antIcon} />;
     if (articles.error) return <React.Fragment>Error :(</React.Fragment>;
 
 
