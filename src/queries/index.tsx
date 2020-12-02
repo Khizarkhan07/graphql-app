@@ -54,3 +54,14 @@ export const VIEW_ARTICLE = gql`
     }
   }
 `;
+
+export const GET_ARTICLES_SUB = gql`
+  subscription {
+      articleAdded {
+        title,
+        body,
+        _id,
+        createdAt
+      }
+  }
+`;

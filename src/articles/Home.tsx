@@ -1,5 +1,5 @@
 import React, {useCallback, useMemo} from 'react';
-import { useQuery, useMutation } from '@apollo/react-hooks';
+import { useQuery, useMutation, useSubscription } from '@apollo/react-hooks';
 import {GET_ARTICLES, DELETE_ARTICLE} from "../queries";
 import { PageHeader, Button, Descriptions, Spin , Popconfirm } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';

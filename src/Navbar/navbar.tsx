@@ -10,6 +10,7 @@ const Navbar = () => {
                 <Menu theme="dark" mode="horizontal">
                     <Menu.Item key="1"><a href="/">Articles</a></Menu.Item>
                     <Menu.Item key="2"><a href="/create">Create Article</a></Menu.Item>
+                    <Menu.Item key="3"><a href="/sub">Sub</a></Menu.Item>
                 </Menu>
             </Header>
         </Layout>
