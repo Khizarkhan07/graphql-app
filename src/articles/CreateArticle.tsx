@@ -5,7 +5,7 @@ import {useMutation} from "@apollo/react-hooks";
 import {ADD_ARTICLE} from "../queries";
 const { TextArea } = Input;
 
-const CreateArticle = () => {
+const CreateArticle: React.FC = () => {
     const [state, setState] = useState<article>({title: '', body: ''})
     const [addArticle, { loading: editing, error: editError }] = useMutation(ADD_ARTICLE);
 

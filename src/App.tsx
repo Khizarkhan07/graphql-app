@@ -3,10 +3,10 @@ import Home from "./articles/Home";
 import 'antd/dist/antd.css';
 import Navbar from "./Navbar/navbar";
 import EditArticle from "./articles/EditArticle";
-import { Switch, Route, withRouter, RouteComponentProps} from 'react-router-dom';
+import { Switch, Route, withRouter} from 'react-router-dom';
 import CreateArticle from "./articles/CreateArticle";
 import Subscription from "./articles/Subscription";
-const App: React.FC<RouteComponentProps<any>> = () => {
+const App: React.FC = () => {
   return (
     <div className="app">
         <Navbar/>

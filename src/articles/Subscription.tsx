@@ -2,7 +2,6 @@ import React, {useCallback, useMemo} from 'react';
 import { useQuery, useMutation, useSubscription } from '@apollo/react-hooks';
 import {GET_ARTICLES, DELETE_ARTICLE, GET_ARTICLES_SUB} from "../queries";
 import { PageHeader, Button, Descriptions, Spin , Popconfirm } from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
 import {HeaderWrapper} from "./Home.styles";
 
 type article = {
@@ -11,13 +10,11 @@ type article = {
     body: string,
     createdAt: string
 }
-const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 const Subscription:React.FC = () =>  {
-    /*const articles = useQuery(GET_ARTICLES);*/
     const articles = useSubscription(GET_ARTICLES_SUB);
     console.log(articles)
-    const [deleteArticle, { loading: deleting, error: deleteError }] = useMutation(DELETE_ARTICLE);
+    const [deleteArticle] = useMutation(DELETE_ARTICLE);
     const renderArticles = useMemo(()=> {
         if(!articles.loading) {
             return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
 const { Header} = Layout;
-const Navbar = () => {
+const Navbar: React.FC = () => {
     return (
         <Layout className="layout">
             <Header>

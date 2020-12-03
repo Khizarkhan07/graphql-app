@@ -12,13 +12,14 @@ export type article = {
     title: string,
     body: string
 }
+type TParams = { id: string };
 
-const EditArticle: React.FC<RouteComponentProps<any>> = (props) => {
+const EditArticle= ({ match }: RouteComponentProps<TParams>) => {
 
     const [state, setState] = useState<article>({title: '', body: ''})
 
     const { data, loading, error } = useQuery(VIEW_ARTICLE, {
-        variables: { id: props.match.params.id }, onCompleted(data ){
+        variables: { id: match.params.id }, onCompleted(data ){
                 setState({title: data.singleArticle.title, body: data.singleArticle.body})
         }
     });
@@ -34,7 +35,7 @@ const EditArticle: React.FC<RouteComponentProps<any>> = (props) => {
     }, [state])
 
     const handleSubmit = useCallback(() =>{
-        editArticle({ variables: { id: props.match.params.id, title: state.title, body: state.body } }).
+        editArticle({ variables: { id: match.params.id, title: state.title, body: state.body } }).
         then(result => {
             window.location.href = '/'
         })
