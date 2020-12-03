@@ -1,6 +1,5 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
-import './navbar.css'
 const { Header} = Layout;
 const Navbar = () => {
     return (

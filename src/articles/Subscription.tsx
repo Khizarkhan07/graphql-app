@@ -3,7 +3,8 @@ import { useQuery, useMutation, useSubscription } from '@apollo/react-hooks';
 import {GET_ARTICLES, DELETE_ARTICLE, GET_ARTICLES_SUB} from "../queries";
 import { PageHeader, Button, Descriptions, Spin , Popconfirm } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
-import './styles.css'
+import {HeaderWrapper} from "./Home.styles";
+
 type article = {
     _id: string,
     title : string,
@@ -20,7 +21,7 @@ const Subscription:React.FC = () =>  {
     const renderArticles = useMemo(()=> {
         if(!articles.loading) {
             return (
-                <div className="site-page-header-ghost-wrapper">
+                <HeaderWrapper>
                     <PageHeader
                         ghost={false}
                         title= {articles.data.articleAdded.title}
@@ -52,7 +53,8 @@ const Subscription:React.FC = () =>  {
                             </Descriptions.Item>
                         </Descriptions>
                     </PageHeader>
-                </div>
+                </HeaderWrapper
+                >
             )
         }
 

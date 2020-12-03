@@ -3,7 +3,7 @@ import { useQuery, useMutation, useSubscription } from '@apollo/react-hooks';
 import {GET_ARTICLES, DELETE_ARTICLE} from "../queries";
 import { PageHeader, Button, Descriptions, Spin , Popconfirm } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
-import './styles.css'
+import {HeaderWrapper} from './Home.styles'
 type article = {
     _id: string,
     title : string,
@@ -18,7 +18,7 @@ const Home:React.FC = () =>  {
     const renderArticles = useMemo(()=> {
         return articles.data?.articles.map ((article: article)  => {
                 return (
-                    <div className="site-page-header-ghost-wrapper">
+                    <HeaderWrapper>
                         <PageHeader
                             ghost={false}
                             title= {article.title}
@@ -50,7 +50,7 @@ const Home:React.FC = () =>  {
                                 </Descriptions.Item>
                             </Descriptions>
                         </PageHeader>
-                    </div>
+                    </HeaderWrapper>
                 )
             })
 
